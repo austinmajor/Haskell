@@ -25,7 +25,17 @@ The Haskell interaction may look like:
         "unknown"
 -}
 
-readDigit x = undefined
+readDigit :: (Integral x) => x -> String
+readDigit 1 = "one"
+readDigit 2 = "two"
+readDigit 3 = "three"
+readDigit 4 = "four"
+readDigit 5 = "five"
+readDigit 6 = "six"
+readDigit 7 = "seven"
+readDigit 8 = "eight"
+readDigit 9 = "nine"
+readDigit x = "unknown"
 
 {-|
 [10 marks] PLEASE IMPLEMENT THE FUNTION USING "GUARDS".
@@ -45,7 +55,12 @@ The Haskell interaction may look like:
         False
 -}
 
-leap n = undefined
+leap::Int->Bool
+leap y
+  | mod y 400 == 0 = True
+  | mod y 100 == 0 = False
+  | mod y 4 == 0 = True
+  | otherwise = False
 
 {-| [10 marks] 
 The function pangram s, which takes a string s as input, and returns True if s is a pangram, and False otherwise.
@@ -82,5 +97,10 @@ zip ['A'..'Z'] ['a'..'z']
 
 -}
 
-pangram s = undefined
+import Data.Char (toLower)
+import Data.List ((\\))
+ 
+pangram :: String -> Bool
+pangram = null . (['a' .. 'z'] \\) . map toLower
 
+pangram s = null [x | x <- zip ['A'..'Z'] ['a'..'z'], not (fst x `elem` s), not (snd x `elem` s)]
