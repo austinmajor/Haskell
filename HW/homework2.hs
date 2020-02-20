@@ -1,7 +1,9 @@
 -- Homework #2
--- Due on: Wednesday 02/19/2020
---
---
+-- Austin Major 
+-- N675Q967
+-- Programming Paradigms CS410
+
+
 --Grading Rubric:
 -- 100%: works on all given examples AND other general cases
 -- 75%: works on all given examples but not on similar general cases
@@ -97,10 +99,5 @@ zip ['A'..'Z'] ['a'..'z']
 
 -}
 
-import Data.Char (toLower)
-import Data.List ((\\))
- 
 pangram :: String -> Bool
-pangram = null . (['a' .. 'z'] \\) . map toLower
-
 pangram s = null [x | x <- zip ['A'..'Z'] ['a'..'z'], not (fst x `elem` s), not (snd x `elem` s)]
