@@ -63,7 +63,6 @@ The Haskell interaction may look like:
 -- bin2dec s = undefined
 
 bin2dec :: String -> Integer
-
 bin2dec "" = 0
 bin2dec "0" = 0
 bin2dec "1" = 1
